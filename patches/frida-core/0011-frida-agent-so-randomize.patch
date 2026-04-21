@@ -1,0 +1,43 @@
+From 8c5f26cc92e6202cd75f522dfdb6f70ef64d5693 Mon Sep 17 00:00:00 2001
+From: FDlucifer <lucifercaonima@gmail.com>
+Date: Tue, 21 Apr 2026 12:52:12 +0800
+Subject: [PATCH 11/13] frida agent so randomize
+
+---
+ src/linux/linux-host-session.vala | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/linux/linux-host-session.vala b/src/linux/linux-host-session.vala
+index 666c36e5..0fb71be0 100644
+--- a/src/linux/linux-host-session.vala
++++ b/src/linux/linux-host-session.vala
+@@ -389,13 +389,13 @@ namespace Frida {
+ 			unowned string arch_suffix;
+ 			switch (cpu_type_from_pid (pid)) {
+ 				case Gum.CpuType.IA32:
+-				  arch_suffix = "arm";
+-				  break;
++					arch_suffix = "arm";
++					break;
+ 				case Gum.CpuType.AMD64:
+-				  arch_suffix = "arm64";
+-				  break;
++					arch_suffix = "arm64";
++					break;
+ 				default:
+-				  throw new Error.NOT_SUPPORTED ("Emulated realm is not supported on this architecture");
++					throw new Error.NOT_SUPPORTED ("Emulated realm is not supported on this architecture");
+ 			}
+ 
+ 			// 从 agent.resources 动态匹配（不再使用硬编码）
+@@ -406,6 +406,7 @@ namespace Frida {
+ 			return resource.get_file().path;
+ 		}
+ 
++
+ #if ANDROID
+ 		private void on_system_server_agent_unloaded (InternalAgent dead_agent) {
+ 			dead_agent.unloaded.disconnect (on_system_server_agent_unloaded);
+-- 
+2.34.1
+

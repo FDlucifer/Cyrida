@@ -1,0 +1,26 @@
+From 82d361f85f63016339480f2078aa750a8e57f216 Mon Sep 17 00:00:00 2001
+From: FDlucifer <lucifercaonima@gmail.com>
+Date: Tue, 21 Apr 2026 09:29:00 +0800
+Subject: [PATCH 04/13] Relax protocol validation to avoid unexpected
+ interruptions.
+
+---
+ src/droidy/droidy-client.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/droidy/droidy-client.vala b/src/droidy/droidy-client.vala
+index e34ab90f..bedac271 100644
+--- a/src/droidy/droidy-client.vala
++++ b/src/droidy/droidy-client.vala
+@@ -1015,7 +1015,7 @@ namespace Frida.Droidy {
+ 						case "OPEN":
+ 						case "CLSE":
+ 						case "WRTE":
+-							throw new Error.PROTOCOL ("Unexpected command");
++							break; // throw new Error.PROTOCOL ("Unexpected command");
+ 
+ 						default:
+ 							var length = parse_length (command_or_length);
+-- 
+2.34.1
+

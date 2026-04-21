@@ -1,0 +1,25 @@
+From 7f443527508ca96dddcf0cf86930700262824875 Mon Sep 17 00:00:00 2001
+From: FDlucifer <lucifercaonima@gmail.com>
+Date: Tue, 21 Apr 2026 12:53:07 +0800
+Subject: [PATCH 12/13] frida agent so randomize
+
+---
+ src/linux/linux-host-session.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/linux/linux-host-session.vala b/src/linux/linux-host-session.vala
+index 0fb71be0..eec8cb17 100644
+--- a/src/linux/linux-host-session.vala
++++ b/src/linux/linux-host-session.vala
+@@ -57,7 +57,7 @@ namespace Frida {
+ 			injector = new Linjector (helper, false, tempdir);
+ 			injector.uninjected.connect (on_uninjected);
+ 
+-#if HAVE_EMBEDDED_ASSETS
++#if HAVE_EMBEDDED_ASSETS
+         var blob32 = Frida.Data.Agent.get_frida_agent_32_so_blob ();
+         var blob64 = Frida.Data.Agent.get_frida_agent_64_so_blob ();
+         var emulated_arm = Frida.Data.Agent.get_frida_agent_arm_so_blob ();
+-- 
+2.34.1
+

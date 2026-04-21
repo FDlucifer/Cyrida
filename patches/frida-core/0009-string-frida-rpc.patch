@@ -1,0 +1,35 @@
+From 5cc739c53f5cd1a7a45ae3bd8889ecbac39b090e Mon Sep 17 00:00:00 2001
+From: FDlucifer <lucifercaonima@gmail.com>
+Date: Tue, 21 Apr 2026 11:48:08 +0800
+Subject: [PATCH 09/13] string frida rpc
+
+---
+ lib/base/rpc.vala | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/lib/base/rpc.vala b/lib/base/rpc.vala
+index 06548bfd..98d95b5b 100644
+--- a/lib/base/rpc.vala
++++ b/lib/base/rpc.vala
+@@ -70,12 +70,12 @@ namespace Frida {
+ 		}
+ 
+ 		public string getRpcStr(bool quote){
+-				string result = (string) GLib.Base64.decode((string) GLib.Base64.decode("Wm5KcFpHRTZjbkJq"));
+-				if(quote){
+-					 return "\"" + result + "\"";
+-				}else{
+-					 return result;
+-				}
++			string result = (string) GLib.Base64.decode((string) GLib.Base64.decode("Wm5KcFpHRTZjbkJq"));
++			if(quote){
++				 return "\"" + result + "\"";
++			}else{
++				 return result;
++			}
+ 		}
+ 
+ 		public bool try_handle_message (string json) {
+-- 
+2.34.1
+

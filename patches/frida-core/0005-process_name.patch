@@ -1,0 +1,25 @@
+From 3ba3177fe9f3d279bf908a064a132feca62a7e53 Mon Sep 17 00:00:00 2001
+From: FDlucifer <lucifercaonima@gmail.com>
+Date: Tue, 21 Apr 2026 09:33:22 +0800
+Subject: [PATCH 05/13] process_name
+
+---
+ src/frida-glue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/frida-glue.c b/src/frida-glue.c
+index ee8f0737..292ff5a5 100644
+--- a/src/frida-glue.c
++++ b/src/frida-glue.c
+@@ -39,7 +39,7 @@ frida_init_with_runtime (FridaRuntime rt)
+ #ifdef HAVE_GIOOPENSSL
+     g_io_module_openssl_register ();
+ #endif
+-
++    g_set_prgname("gabond");
+     if (runtime == FRIDA_RUNTIME_OTHER)
+     {
+       main_context = g_main_context_ref (g_main_context_default ());
+-- 
+2.34.1
+

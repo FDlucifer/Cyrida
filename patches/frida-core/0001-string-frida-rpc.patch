@@ -1,0 +1,42 @@
+From b753c540f6d480acbe29f4a30a6f10a52bf29879 Mon Sep 17 00:00:00 2001
+From: FDlucifer <lucifercaonima@gmail.com>
+Date: Tue, 21 Apr 2026 09:05:16 +0800
+Subject: [PATCH 01/13] string frida rpc
+
+---
+ lib/base/rpc.vala | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/lib/base/rpc.vala b/lib/base/rpc.vala
+index c4654527..845da7aa 100644
+--- a/lib/base/rpc.vala
++++ b/lib/base/rpc.vala
+@@ -69,8 +69,24 @@ namespace Frida {
+ 			return pending.result;
+ 		}
+ 
++		/**
++		 * 动态构造 "frida:rpc"
++		 *
++		 * @param quote 是否返回带引号的字符串：
++		 * 							true  -> "\"frida:rpc\""
++		 * 							false -> "frida:rpc" 	 
++		 */
++		public string getRpcStr(bool quote){
++				string result = (string) GLib.Base64.decode((string) GLib.Base64.decode("Wm5KcFpHRTZjbkJq"));
++				if(quote){
++					 return "\"" + result + "\"";
++				}else{
++					 return result;
++				}
++		}
++
+ 		public bool try_handle_message (string json) {
+-			if (json.index_of ("\"frida:rpc\"") == -1)
++			if (json.index_of (getRpcStr(true)) == -1)
+ 				return false;
+ 
+ 			var parser = new Json.Parser ();
+-- 
+2.34.1
+
